@@ -1,7 +1,9 @@
-import { config } from 'dotenv';
+require('dotenv').config();
 
-config();
-
-module.exports = {
-  port: process.env.PORT
+const env = {
+  port: process.env.PORT,
+  databaseUrl: process.env.DATABASE_URL,
+  databaseDialect: process.env.DATABASE_DIALECT
 };
+
+module.exports = env;
