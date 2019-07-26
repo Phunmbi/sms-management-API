@@ -17,6 +17,7 @@
     "db:prepare": "yarn db:rollback && yarn db:migrate"
   },
   "dependencies": {
+    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
