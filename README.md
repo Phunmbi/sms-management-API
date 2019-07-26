@@ -1,5 +1,12 @@
+[![CircleCI](https://circleci.com/gh/Phunmbi/sms-management-API.svg?style=svg)](https://circleci.com/gh/Phunmbi/sms-management-API) [![Maintainability](https://api.codeclimate.com/v1/badges/37768409d26eb4d278c7/maintainability)](https://codeclimate.com/github/Phunmbi/sms-management-API/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/37768409d26eb4d278c7/test_coverage)](https://codeclimate.com/github/Phunmbi/sms-management-API/test_coverage)
+
 # SMS Manager
 Basic SMS REST API application built with NodeJS and ExpressJS
+
+
+### Deployment
+API is deployed at [https://sms-management-lms-api.herokuapp.com/](https://sms-management-lms-api.herokuapp.com/)
+
 ## Table of Contents
 * [Technologies](#technologies)
 * [Features Implemented](#features-implemented)
@@ -19,6 +26,12 @@ You can find the project at [https://www.pivotaltracker.com/n/projects/2375889](
 * [ESLint](https://eslint.org/) - Linter Tool
 #### Compiler
 * [Babel](https://eslint.org/) - Compiler for Next Generation JavaScript
+#### Test Tools
+* [Mocha](https://mochajs.org/) - JavaScript Test Framework for API Tests (Backend)
+* [Chai](http://chaijs.com/) - TDD/BDD Assertion Library for Node
+* [Chai-Http](https://www.chaijs.com/plugins/chai-http/) - A chai testing plugin for http/https async tests
+* [Istanbul(nyc)](https://istanbul.js.org/) - Code Coverage Generator
+* [Yarn](https://yarnpkg.org/) - Package managemnet
 ## Features Implemented
 ### Users
 * Users are able to sign in to the app using the email and password provided to them
