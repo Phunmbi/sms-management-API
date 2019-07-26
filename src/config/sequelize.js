@@ -3,7 +3,7 @@ const env = require('./environmentSetup.js');
 const defaultConfig = {
   databaseUrl: env.databaseUrl,
   dialect: env.databaseDialect || 'postgres',
-  use_env_variable: 'DATABASE_URL',
+  use_env_variable: env.useVariable,
 };
 
 const database = {
