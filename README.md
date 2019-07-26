@@ -66,7 +66,7 @@ You can run `yarn dev` in development to use [Nodemon](https://nodemon.io/).
 #### Testing with Coverage Data
 * After installing as shown
 ## Using the Live App
-The live application is hosted at [https://sms-manager-sivy.herokuapp.com](https://sms-manager-sivy.herokuapp.com).
+The live application is hosted at [https://www.chaijs.com/plugins/chai-http/](https://www.chaijs.com/plugins/chai-http/).
 ## License
 &copy; Funmbi Adeyokunnu
 Licensed under the [MIT License](https://github.com/Phunmbi/sms-management-API/blob/master/LICENSE)
