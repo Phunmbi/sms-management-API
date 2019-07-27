@@ -14,21 +14,20 @@ export default (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false
-      }
+      },
     },
     { paranoid: true }
   );
   Contact.associate = (models) => {
     Contact.hasMany(models.Message, {
       foreignKey: 'senderId',
-      as: 'messagesSent'
+      as: 'sentMessage'
     });
 
     Contact.hasMany(models.Message, {
       foreignKey: 'receiverId',
-      as: 'messagesReceived'
+      as: 'receivedMessage'
     });
-
   };
   return Contact;
 };

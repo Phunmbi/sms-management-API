@@ -9,12 +9,24 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       senderId: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
+      type: Sequelize.STRING,
+        allowNull: false,
+        references: {
+          model: 'Contacts',
+          key: 'phoneNumber',
+          onDelete: 'CASCADE',
+          onUpdate: 'CASCADE'
+      }
+    },
       receiverId: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.STRING,
+        allowNull: false,
+        references: {
+          model: 'Contacts',
+          key: 'phoneNumber',
+          onDelete: 'CASCADE',
+          onUpdate: 'CASCADE'
+        }
       },
       message: {
         type: Sequelize.STRING,
@@ -31,6 +43,10 @@ module.exports = {
       },
       updatedAt: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deletedAt: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
