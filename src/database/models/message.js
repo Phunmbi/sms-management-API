@@ -32,6 +32,7 @@ export default (sequelize, DataTypes) => {
     Message.belongsTo(models.Contact, {
       as: 'Receiver',
       foreignKey: 'receiverId',
+      onDelete: 'CASCADE'
     });
 
   };

@@ -1,19 +1,18 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
+import { expect } from 'chai';
+import request from "supertest";
 import app from '../src/app';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-// console.log(process.env);
-chai.use(chaiHttp);
-
-it('should simulate failure to GET a non-existing route', () => {
-  chai.request(app)
-    .get('/random')
-    .end((err, res) => {
-      console.log(res);
-      expect(err).to.be.null;
-      expect(res).to.have.status(404);
-    });
+describe('Test API', () => {
+  it('should simulate failure to GET a non-existing route', (done) => {
+    request(app)
+      .get('/random')
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        expect(res.body.message).to.equal("Not Found. Use /api/v1 to access the Api");
+        done()
+      });
+  });
 });
