@@ -29,7 +29,7 @@ You can find the project at [https://www.pivotaltracker.com/n/projects/2375889](
 #### Test Tools
 * [Mocha](https://mochajs.org/) - JavaScript Test Framework for API Tests (Backend)
 * [Chai](http://chaijs.com/) - TDD/BDD Assertion Library for Node
-* [Chai-Http](https://www.chaijs.com/plugins/chai-http/) - A chai testing plugin for http/https async tests
+* [Supertest](https://www.npmjs.com/package/supertest) - A superagent implementation for http tests
 * [Istanbul(nyc)](https://istanbul.js.org/) - Code Coverage Generator
 * [Yarn](https://yarnpkg.org/) - Package managemnet
 ## Features Implemented
