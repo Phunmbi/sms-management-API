@@ -10,7 +10,8 @@ describe('Contact API test', () => {
     request(app)
       .post('/api/v1/signup')
       .send({
-        name: "Dennis",
+        firstName: "Dennis",
+        lastName: "Law",
         phoneNumber: "080808089455",
         password: "Password"
       })
@@ -25,9 +26,10 @@ describe('Contact API test', () => {
     request(app)
       .post('/api/v1/signup')
       .send({
-        name: " ",
+        firstName: " ",
+        lastName: "Law",
         phoneNumber: "08080808988455",
-        password: "Password"
+        password: "Passworded"
       })
       .end((err, res) => {
         expect(res.status).to.equal(400);
@@ -39,7 +41,8 @@ describe('Contact API test', () => {
     request(app)
       .post('/api/v1/signup')
       .send({
-        name: "Dennis",
+        firstName: "Dennis",
+        lastName: "Law",
         phoneNumber: "080808089455",
         password: "Password"
       })
@@ -53,7 +56,8 @@ describe('Contact API test', () => {
     request(app)
       .post('/api/v1/signup')
       .send({
-        name: 4378239,
+        firstName: 4378239,
+        lastName: "Last",
         phoneNumber: "080808089455",
         password: "Password"
       })

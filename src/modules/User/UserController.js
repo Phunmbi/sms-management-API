@@ -1,28 +1,28 @@
-import models from '../../database/models';
+import { User } from '../../database/models';
 import ErrorHandler from '../../Helpers/ErrorHandler';
 
 /**
- * * Contact Controller
+ * * User Controller
  *
- * @exports
- * @function ContactController
+ * @function UserController
  * @type {{createOwner: createOwner, signInOwner: signInOwner}}
  */
-const ContactController = (() => {
+const UserController = (() => {
   /**
    * Controller for handling creating a new user
    *
    * @param req - expressJS request Object
    * @param res - expressJS response Object
-   * @memberOf ContactMiddleware
+   * @memberOf UserController
    * @function createOwner
    * @returns {Promise<void>}
    */
   const createOwner = async (req, res) => {
     try {
       const {reqBody} = req;
-      const newUser = await models.Contact.create({
-        name: reqBody.name,
+      const newUser = await User.create({
+        firstName: reqBody.firstName,
+        lastName: reqBody.lastName,
         phoneNumber: reqBody.phoneNumber,
         password: reqBody.hash
       });
@@ -31,7 +31,8 @@ const ContactController = (() => {
         success: true,
         user: {
           id: newUser.id,
-          name: newUser.name,
+          firstName: newUser.firstName,
+          lastName: newUser.lastName,
           phoneNumber: newUser.phoneNumber,
           createdAt: newUser.createdAt,
           updatedAt: newUser.updatedAt
@@ -50,7 +51,7 @@ const ContactController = (() => {
    *
    * @param req - expressJS request Object
    * @param res - expressJS response Object
-   * @memberOf ContactMiddleware
+   * @memberOf UserController
    * @function signInOwner
    * @returns {Promise<void>}
    */
@@ -82,4 +83,4 @@ const ContactController = (() => {
   }
 })();
 
-export default ContactController;
+export default UserController;
