@@ -1,12 +1,12 @@
-import _ from 'lodash';
-import {User} from '../../database/models'
+import _ from "lodash";
+import { User } from '../../database/models'
 import ErrorHandler from "../../Helpers/ErrorHandler";
 
 /**
  * * User Validations
  *
  * @function UserValidator
- * @type {{checkIfUserExists: UserValidator.checkIfUserExists, checkUserDetailsSignUp: UserValidator.checkUserDetailsSignUp, checkUserDetailsSignIn: UserValidator.checkUserDetailsSignIn, checkIfUserAlreadyExists: UserValidator.checkIfUserAlreadyExists}}
+ * @type {{checkIfUserExists: checkIfUserExists, checkUserDetailsSignUp: checkUserDetailsSignUp, checkUserDetailsSignIn: checkUserDetailsSignIn, checkIfUserAlreadyExists: checkIfUserAlreadyExists}}
  */
 const UserValidator = (() => {
   let errors = [];
