@@ -1,11 +1,11 @@
-import {Contact} from '../../database/models';
+import {Contact, Message} from '../../database/models';
 import ErrorHandler from '../../Helpers/ErrorHandler';
 
 /**
  * Contact Controller
  *
  * @function ContactController
- * @type {{retrieveAllContacts: retrieveAllContacts, addContact: addContact, retrieveSingleContact: retrieveSingleContact}}
+ * @type {{retrieveAllContacts: retrieveAllContacts, addContact: addContact, retrieveSingleContact: retrieveSingleContact, deleteSingleContact: deleteSingleContact}}
  */
 const ContactController = (() => {
   /**
@@ -79,11 +79,10 @@ const ContactController = (() => {
    */
   const retrieveSingleContact = async (req, res) => {
     try {
-      const phoneNumber = req.params;
-      console.log(phoneNumber.phoneNumber, typeof phoneNumber.phoneNumber);
-      const singleContact = await Contact.findAll({where: {phoneNumber: phoneNumber.phoneNumber}});
+      const {contactId} = req.params;
+      const singleContact = await Contact.findByPk(contactId);
 
-      if (singleContact.length === 0) {
+      if (!singleContact) {
         return ErrorHandler.handleError("Contact does not exist",404,res);
       }
 
@@ -98,10 +97,50 @@ const ContactController = (() => {
     }
   };
 
+  /**
+   *
+   * @param req - expressJS request Object
+   * @param res - expressJS response Object
+   * @memberOf ContactController
+   * @function deleteSingleContact
+   * @returns {Promise<void>}
+   */
+  const deleteSingleContact = async (req, res) => {
+    try {
+      const {contactId} = req.params;
+      const singleContact = await Contact.findByPk(contactId);
+
+      if (!singleContact) {
+        return ErrorHandler.handleError("Contact does not exist",404,res);
+      }
+
+      // Find all messages by that contact and soft delete them first
+      const contactsMessages = await Message.findAll({where:{senderId: singleContact.phoneNumber}});
+      if(contactsMessages) {
+        contactsMessages.map(each => {
+          each.destroy();
+        })
+      }
+
+      //Then delete the contact
+      singleContact.destroy();
+
+      res.status(200).json({
+        success: true,
+        contact: singleContact,
+        message: 'Successfully deleted contact and associated messages',
+      });
+    } catch (e) {
+      /* istanbul ignore next */
+      ErrorHandler.handleError("Server Error",500,res);
+    }
+  };
+
   return {
     addContact,
     retrieveAllContacts,
-    retrieveSingleContact
+    retrieveSingleContact,
+    deleteSingleContact
   }
 })();
 
