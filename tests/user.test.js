@@ -81,6 +81,19 @@ describe('User API test', () => {
       })
   });
 
+  it('should simulate POST request to sign user in with wrong password', (done) => {
+    request(app)
+      .post('/api/v1/login')
+      .send({
+        phoneNumber: "080808089455",
+        password: "Passwords"
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(401);
+        done()
+      })
+  });
+
   it('should simulate fail to POST request to sign user in when an input is empty', (done) => {
     request(app)
       .post('/api/v1/login')

@@ -20,9 +20,15 @@ ContactRouter.get(
 );
 
 ContactRouter.get(
-  '/contacts/:phoneNumber',
+  '/contacts/:contactId',
   Authentication.authenticate,
   ContactController.retrieveSingleContact
+);
+
+ContactRouter.delete(
+  '/contacts/:contactId',
+  Authentication.authenticate,
+  ContactController.deleteSingleContact
 );
 
 export default ContactRouter;

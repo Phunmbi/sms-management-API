@@ -108,7 +108,7 @@ describe('Contact API test', () => {
 
   it('should simulate GET single contact', (done) => {
     request(app)
-      .get('/api/v1/contacts/080808089455')
+      .get('/api/v1/contacts/1')
       .set('Authorization', token)
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -142,6 +142,32 @@ describe('Contact API test', () => {
       .get('/api/v1/contacts/64732')
       .end((err, res) => {
         expect(res.status).to.equal(401);
+        done()
+      })
+  });
+
+  it('should simulate POST request to add contact', (done) => {
+    request(app)
+      .post('/api/v1/contacts/add')
+      .set('Authorization', token)
+      .send({
+        firstName: "Steven",
+        lastName: "Storage",
+        phoneNumber: "00002",
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(201);
+        expect(res.body.message).to.be.a('string');
+        done()
+      })
+  });
+
+  it('should simulate to DELETE contact', (done) => {
+    request(app)
+      .delete('/api/v1/contacts/2')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
         done()
       })
   });
