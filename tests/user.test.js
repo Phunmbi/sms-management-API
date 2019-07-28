@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-describe('Contact API test', () => {
+describe('User API test', () => {
   it('should simulate POST request to sign user up', (done) => {
     request(app)
       .post('/api/v1/signup')

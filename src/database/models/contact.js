@@ -6,6 +6,10 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       phoneNumber: {
         type: DataTypes.STRING,
         allowNull: false,

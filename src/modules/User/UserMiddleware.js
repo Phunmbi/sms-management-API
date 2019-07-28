@@ -37,32 +37,6 @@ const UserMiddleware = (() => {
   };
 
   /**
-   * Authenticates users signing in to the application
-   *
-   * @param req - expressJS request Object
-   * @param res - expressJS response Object
-   * @param next - expressJS generator trigger
-   * @returns {object} response object
-   * @memberOf UserMiddleware
-   * @function authenticate
-   */
-  const authenticate = (req, res, next) => {
-    const token = req.headers.authorization || req.body.token || req.query.token;
-
-    if (!token) {
-      ErrorHandler.handleError("Please provide a token", 401, res);
-    }
-
-    jwt.decode(token, userSecret, (err, decodedToken) => {
-      if (err) {
-        ErrorHandler.handleError("Please provide a valid token", 401, res);
-      }
-    });
-
-    next();
-  };
-
-  /**
    * Hashes user password for security
    *
    * @param req - expressJS request Object
@@ -110,7 +84,6 @@ const UserMiddleware = (() => {
 
   return {
     generateToken,
-    authenticate,
     hashPassword,
     comparePassword,
   }
