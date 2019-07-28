@@ -2,7 +2,7 @@ export default (sequelize, DataTypes) => {
   const Contact = sequelize.define(
     'Contact',
     {
-      name: {
+      firstName: {
         type: DataTypes.STRING,
         allowNull: false
       },
@@ -10,11 +10,7 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
+      }
     },
     { paranoid: true }
   );

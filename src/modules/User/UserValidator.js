@@ -1,15 +1,14 @@
 import _ from 'lodash';
-import models from '../../database/models'
+import {User} from '../../database/models'
 import ErrorHandler from "../../Helpers/ErrorHandler";
 
 /**
- * Handles Contact validations
+ * * User Validations
  *
- * @exports
- * @function ContactValidator
- * @type {{checkIfUserExists: ContactValidator.checkIfUserExists, checkContactDetailsSignIn: ContactValidator.checkContactDetailsSignIn, checkIfUserAlreadyExists: ContactValidator.checkIfUserAlreadyExists, checkContactDetailsSignUp: ContactValidator.checkContactDetailsSignUp}}
+ * @function UserValidator
+ * @type {{checkIfUserExists: UserValidator.checkIfUserExists, checkUserDetailsSignUp: UserValidator.checkUserDetailsSignUp, checkUserDetailsSignIn: UserValidator.checkUserDetailsSignIn, checkIfUserAlreadyExists: UserValidator.checkIfUserAlreadyExists}}
  */
-const ContactValidator = (() => {
+const UserValidator = (() => {
   let errors = [];
   /**
    * Validate request body for sign up
@@ -18,17 +17,18 @@ const ContactValidator = (() => {
    * @param res - expressJS response Object
    * @param next - expressJS generator trigger
    * @returns {object} response object
-   * @memberOf ContactValidator
-   * @function checkContactDetailsSignUp
+   * @memberOf UserValidator
+   * @function checkUserDetailsSignUp
    */
-
-  const checkContactDetailsSignUp = (req, res, next) => {
+  const checkUserDetailsSignUp = (req, res, next) => {
     const reqBody = {
-      name: req.body.name,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       phoneNumber: req.body.phoneNumber,
       password: req.body.password
     };
-    checkNotEmpty('Name', reqBody.name);
+    checkNotEmpty('First Name', reqBody.firstName);
+    checkNotEmpty('Last Name', reqBody.lastName);
     checkNotEmpty('Phone Number', reqBody.phoneNumber);
     checkNotEmpty('Password', reqBody.password);
 
@@ -52,10 +52,10 @@ const ContactValidator = (() => {
    * @param res - expressJS response Object
    * @param next - expressJS generator trigger
    * @returns {object} response object
-   * @memberOf ContactValidator
-   * @function checkContactDetailsSignIn
+   * @memberOf UserValidator
+   * @function checkUserDetailsSignIn
    */
-  const checkContactDetailsSignIn = (req, res, next) => {
+  const checkUserDetailsSignIn = (req, res, next) => {
     const reqBody = {
       phoneNumber: req.body.phoneNumber,
       password: req.body.password
@@ -83,12 +83,12 @@ const ContactValidator = (() => {
    * @param req - expressJS request Object
    * @param res - expressJS response Object
    * @param next - expressJS generator trigger
-   * @memberOf ContactValidator
+   * @memberOf UserValidator
    * @function checkIfUserAlreadyExists
    * @returns {Promise<void>}
    */
   const checkIfUserAlreadyExists = async (req, res, next) => {
-    const existingUser = await models.Contact.findAll({
+    const existingUser = await User.findAll({
       where: { phoneNumber: req.reqBody.phoneNumber }
     });
 
@@ -105,12 +105,12 @@ const ContactValidator = (() => {
    * @param req - expressJS request Object
    * @param res - expressJS response Object
    * @param next - expressJS generator trigger
-   * @memberOf ContactValidator
+   * @memberOf UserValidator
    * @function checkIfUserExists
    * @returns {Promise<void>}
    */
   const checkIfUserExists = async (req, res, next) => {
-    const existingUser = await models.Contact.findAll({
+    const existingUser = await User.findAll({
       where: {phoneNumber: req.reqBody.phoneNumber}
     });
 
@@ -122,13 +122,12 @@ const ContactValidator = (() => {
     }
   };
 
-
   /**
    * Validates for if input field is empty or not
    *
    * @param field - field to be checked
    * @param input - value of field being checked
-   * @memberOf ContactValidator
+   * @memberOf UserValidator
    * @function checkNotEmpty
    * @returns {number|*}
    */
@@ -140,11 +139,11 @@ const ContactValidator = (() => {
   };
 
   return {
-    checkContactDetailsSignUp,
-    checkContactDetailsSignIn,
+    checkUserDetailsSignIn,
+    checkUserDetailsSignUp,
     checkIfUserAlreadyExists,
     checkIfUserExists
   }
 })();
 
-export default ContactValidator;
+export default UserValidator;

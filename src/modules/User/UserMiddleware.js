@@ -4,13 +4,13 @@ import {userSecret} from "../../config/environmentSetup";
 import ErrorHandler from '../../Helpers/ErrorHandler';
 
 /**
- * Contact Middleware
+ * User Middleware
  *
  * @exports
- * @function ContactMiddleware
+ * @function UserMiddleware
  * @type {{generateToken: generateToken, authenticate: authenticate, comparePassword: comparePassword, hashPassword: hashPassword}}
  */
-const ContactMiddleware = (() => {
+const UserMiddleware = (() => {
   /**
    * Generates new token upon sign up and sign in
    *
@@ -18,7 +18,7 @@ const ContactMiddleware = (() => {
    * @param res - expressJS response Object
    * @param next - expressJS generator trigger
    * @returns {object} response object
-   * @memberOf ContactMiddleware
+   * @memberOf UserMiddleware
    * @function generateToken
    */
   const generateToken = (req, res, next) => {
@@ -43,7 +43,7 @@ const ContactMiddleware = (() => {
    * @param res - expressJS response Object
    * @param next - expressJS generator trigger
    * @returns {object} response object
-   * @memberOf ContactMiddleware
+   * @memberOf UserMiddleware
    * @function authenticate
    */
   const authenticate = (req, res, next) => {
@@ -69,7 +69,7 @@ const ContactMiddleware = (() => {
    * @param res - expressJS response Object
    * @param next - expressJS generator trigger
    * @returns {object} response object
-   * @memberOf ContactMiddleware
+   * @memberOf UserMiddleware
    * @function hashPassword
    */
   const hashPassword = (req, res, next) => {
@@ -94,7 +94,7 @@ const ContactMiddleware = (() => {
    * @param res - expressJS response Object
    * @param next - expressJS generator trigger
    * @returns {object} response object
-   * @memberOf ContactMiddleware
+   * @memberOf UserMiddleware
    * @function comparePassword
    */
   const comparePassword = async (req, res, next) => {
@@ -116,4 +116,4 @@ const ContactMiddleware = (() => {
   }
 })();
 
-export default ContactMiddleware;
+export default UserMiddleware;

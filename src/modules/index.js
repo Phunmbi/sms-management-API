@@ -1,10 +1,10 @@
-import ContactRouter from './Contact';
+import UserRouter from './User';
 
 const apiPrefix = '/api/v1';
 
 //aggregate all routes here
 const routes = [
-  ContactRouter
+  UserRouter
 ];
 
 export default (app) => {
