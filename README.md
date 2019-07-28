@@ -3,6 +3,8 @@
 # SMS Manager
 Basic SMS REST API application built with NodeJS and ExpressJS
 
+### Documentation
+Refer here to access this API's Documentation [https://documenter.getpostman.com/view/3994951/SVYkvLWW](https://documenter.getpostman.com/view/3994951/SVYkvLWW)
 
 ### Deployment
 API is deployed at [https://sms-management-lms-api.herokuapp.com/](https://sms-management-lms-api.herokuapp.com/)
@@ -34,7 +36,8 @@ You can find the project at [https://www.pivotaltracker.com/n/projects/2375889](
 * [Yarn](https://yarnpkg.org/) - Package managemnet
 ## Features Implemented
 ### Users
-* Users are able to sign in to the app using the email and password provided to them
+* Users are able to sign up to the app using names, phone number and password
+* Users are able to sign in to the app using phone number and password
 * Users are able to create a contact
 * Users are able to delete a contact
 * Users are able to get a contact
@@ -66,7 +69,7 @@ You can run `yarn dev` in development to use [Nodemon](https://nodemon.io/).
 #### Testing with Coverage Data
 * After installing as shown
 ## Using the Live App
-The live application is hosted at [https://www.chaijs.com/plugins/chai-http/](https://www.chaijs.com/plugins/chai-http/).
+The live application is hosted at [https://sms-management-lms-api.herokuapp.com/](https://sms-management-lms-api.herokuapp.com/)
 ## License
 &copy; Funmbi Adeyokunnu
 Licensed under the [MIT License](https://github.com/Phunmbi/sms-management-API/blob/master/LICENSE)
